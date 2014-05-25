@@ -1,0 +1,30 @@
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:7.0'
+    providedCompile 'javax.servlet:jstl:1.2'
+}
+
+apply plugin: 'eclipse-wtp'
+
+eclipse {
+    project {
+        name = 'angular-auth-sample'
+    }
+
+    wtp {
+        facet {
+            facet name: 'jst.java', version: '1.7'
+            facet name: 'jst.web', version: '3.0'
+        }
+
+        component {
+            deployName = 'AngularJS Authentication Sample'
+            contextPath  = 'angular-auth-sample'
+        }
+    }
+}
