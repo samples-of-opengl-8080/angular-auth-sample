@@ -20,10 +20,7 @@ angular
     // ページが切り換わるごとに、認証が必要なページの場合はサーバーにセッションの問い合わせを行う
     $rootScope.$on('$routeChangeSuccess', function(event, current, next) {
         if (current.needsAuth) {
-            sessionService.inquire(function whenInvalid() {
-                // セッションが無効の場合はルートに強制遷移する
-                $location.path('/');
-            });
+            sessionService.inquire();
         }
     });
 });

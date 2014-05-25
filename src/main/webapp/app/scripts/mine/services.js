@@ -6,13 +6,7 @@ angular
     };
     
     this.inquire = function(whenInvalid) {
-        $http
-            .get('rest/session')
-            .error(function(data, status, headers, config) {
-                if (status === 401) {
-                    whenInvalid();
-                }
-            });
+        $http.get('rest/session');
     };
     
     this.login = function(opt) {
@@ -28,8 +22,6 @@ angular
             .error(function(data, status, headers, config) {
                 if (status === 401) {
                     opt.invalid();
-                } else {
-                    // その他のエラー処理
                 }
             });
     };
